@@ -115,6 +115,10 @@ module RequiredFiles
     def self.ignored_files
       nil
     end
+    
+    def self.all_files_in_the_same_directory
+      ::Dir.glob( "#{ top_file }/**.rb" ).sort
+    end
 
     def self.all_files_under_the_top_namespace
       ::Dir.glob( "#{ top_file }/**/**.rb" ).sort
