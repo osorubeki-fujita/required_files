@@ -1,5 +1,8 @@
 require "required_files/version"
 
+require "required_files/get"
+require "required_files/make"
+
 module RequiredFiles
 
   class MetaClass
@@ -45,7 +48,7 @@ module RequiredFiles
         end
       end
     end
-    
+
     def set_all_files_under_the_top_namespace
       if set_all_files_under_the_top_namespace?
         _ignored_files = ignored_files
@@ -111,11 +114,11 @@ module RequiredFiles
     def self.other_files
       nil
     end
-    
+
     def self.ignored_files
       nil
     end
-    
+
     def self.all_files_in_the_same_directory
       ::Dir.glob( "#{ top_file }/**.rb" ).sort
     end
@@ -136,13 +139,13 @@ module RequiredFiles
     class << self
 
       alias :required_files :files
-      
+
       private
-      
+
       def settings_for_auto_loading
         nil
       end
-      
+
     end
 
   end
