@@ -1,10 +1,12 @@
 module RequiredFiles::Make
 
-  def self.txt( required_files , top_dir , filename = "required_files" )
-    _required_files = required_files.map { | str | str.gsub( "#{ top_dir }/" , "" ) + ".rb" }
-    ::File.open( "#{ top_dir }/#{ filename }.#{ __method__ }" , "w:utf-8" ) do |f|
-      f.print _required_files.join( "\n" )
-    end
+  # [ :txt , :yaml ].each do | file_type |
+  [ :txt ].each do | file_type |
+    eval <<-DEF
+      def self.#{ file_type }( required_files , top_dir , filename = "required_files" )
+        #{ file_type.capitalize }.new( required_files , top_dir , filename ).generate_file
+      end
+    DEF
   end
-  
+
 end

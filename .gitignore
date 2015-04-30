@@ -9,3 +9,6 @@
 /tmp/
 
 /.latest_version
+
+/lib/required_files/make/yaml.rb
+/lib/required_files/make/yaml/file_group.rb
