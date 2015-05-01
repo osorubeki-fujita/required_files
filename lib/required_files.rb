@@ -108,7 +108,7 @@ module RequiredFiles
 
     def self.top_file
       if settings_for_auto_loading.present?
-        used_part_of_namespace = self.name.gsub( /\A#{ settings_for_auto_loading[ :namespace ].name }/ , "" ).split( "::" ).map { | dir | dir.underscore }
+        used_part_of_namespace = name.gsub( /\A#{ settings_for_auto_loading[ :namespace ].name }/ , "" ).split( "::" ).map( &:underscore )
         ::File.join( settings_for_auto_loading[ :filename ] , *used_part_of_namespace )
       else
         raise "This method \'#{self.name}.#{ __method__ }\' is not defined yet."
