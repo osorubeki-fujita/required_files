@@ -1,3 +1,5 @@
 module RequiredFiles
-  VERSION = "0.2.6"
+
+  VERSION = ::File.open( "#{ ::File.dirname( __FILE__ ) }/../../.current_version" , "r:utf-8" ).read.chomp
+
 end
